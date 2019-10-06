@@ -7,7 +7,7 @@ def getQRcode(data, file_name):
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
-        box_size=5,
+        box_size=10,
         border=4,
     )
 
@@ -47,5 +47,19 @@ def getQRcode(data, file_name):
 
 
 if __name__ == '__main__':
-    getQRcode("世情薄，人情恶，雨送黄昏花易落。晓风干，泪痕残，欲笺心事，独语斜阑。"
-              "难，难，难！人成各，今非昨，病魂常似秋千索。角声寒，夜阑珊，怕人寻问，咽泪装欢。瞒，瞒，瞒！", 'my.png')
+    # getQRcode("世情薄，人情恶，雨送黄昏花易落。晓风干，泪痕残，欲笺心事，独语斜阑。"
+    #           "难，难，难！人成各，今非昨，病魂常似秋千索。角声寒，夜阑珊，怕人寻问，咽泪装欢。瞒，瞒，瞒！", 'my.png')
+    with open('input', 'rb') as f:
+        alldata = f.read()
+        nameid=1
+        start = 0
+        end = len(alldata)
+        addnum = 1200
+        while start < end:
+            data = alldata[start:start+addnum]
+            fname = str(nameid) + '.png'
+            getQRcode(data, fname)
+            nameid += 1
+            start += addnum
+        
+
