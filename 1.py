@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 def getQRcode(data, file_name):
     qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_H,
+        version=40,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
         box_size=10,
         border=4,
     )
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         nameid=1
         start = 0
         end = len(alldata)
-        addnum = 1200
+        addnum = 2048
         while start < end:
             data = alldata[start:start+addnum]
             fname = str(nameid) + '.png'
